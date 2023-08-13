@@ -41,7 +41,8 @@ const App = () =>
   // function to delete a task
 
   const deleteTask = (id) => {
-    console.log(id,'deleted')
+    setTasks(tasks.filter((task) => task.id !== id))
+    console.log(id, 'has been deleted')
   }
 
   return (
