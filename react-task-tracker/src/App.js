@@ -7,6 +7,7 @@ import AddTask from './components/AddTask'
 
 const App = () =>
 {
+  const [showAddForm, setShowAddForm ] = useState(false)
   const [tasks, setTasks] = useState ([
     {
         'id':1,
@@ -38,23 +39,29 @@ const App = () =>
         'day': 'June 5th 2026 0600Hrs',
         'reminder': true
     },])
-
+  // Add a new task
+  const addTask = (task) => {
+    const id = Math.floor(Math.random() *100)+1
+    const newTask = {id, ...task}
+    console.log(newTask)
+    setTasks([...tasks, newTask])
+  }
   // function to delete a task
 
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id))
-    console.log(id, 'has been deleted')
   }
   // toggle task reminder
 
   const toggleReminder = (id) => {
     setTasks(tasks.map((task) => task.id === id ? {...task, reminder : !task.reminder} : task))
   }
-
+  // on clicking 'ADD' button
+  
   return (
     <div className="container">
-      <Header/>
-      <AddTask />
+      {<Header onAdd={() => setShowAddForm(!showAddForm)}/> }
+      {showAddForm &&<AddTask onAdd={addTask}/>}
       {tasks.length > 0 ? (<Tasks onToggle={toggleReminder} tasks={ tasks } onDelete = {deleteTask} />) : ('No more tasks!')}
     </div>
   );
