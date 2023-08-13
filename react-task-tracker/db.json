@@ -1,0 +1,32 @@
+{
+  "tasks" : [{
+    "id":1,
+    "text": "take out trash",
+    "day": "Feb 5th 2026 0600Hrs",
+    "reminder": true
+},
+{
+    "id":2,
+    "text": "go and get car washed",
+    "day": "March 5th 2026 0600Hrs",
+    "reminder": false
+},
+{
+    "id":3,
+    "text": "go on a date with rose",
+    "day": "April 5th 2026 0600Hrs",
+    "reminder": true
+},
+{
+    "id":4,
+    "text": "meet business prospects",
+    "day": "May 5th 2026 0600Hrs",
+    "reminder": false
+},
+{
+    "id":5,
+    "text": "research on crypto",
+    "day": "June 5th 2026 0600Hrs",
+    "reminder": true
+}]
+}

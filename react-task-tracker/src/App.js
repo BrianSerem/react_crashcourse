@@ -1,5 +1,5 @@
 import Header from "./components/Header";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Tasks from "./components/Tasks";
 import AddTask from './components/AddTask'
 
@@ -8,37 +8,25 @@ import AddTask from './components/AddTask'
 const App = () =>
 {
   const [showAddForm, setShowAddForm ] = useState(false)
-  const [tasks, setTasks] = useState ([
-    {
-        'id':1,
-        'text': 'take out trash',
-        'day': 'Feb 5th 2026 0600Hrs',
-        'reminder': true
-    },
-    {
-        'id':2,
-        'text': 'go and get car washed',
-        'day': 'March 5th 2026 0600Hrs',
-        'reminder': false
-    },
-    {
-        'id':3,
-        'text': 'go on a date with rose',
-        'day': 'April 5th 2026 0600Hrs',
-        'reminder': true
-    },
-    {
-        'id':4,
-        'text': 'meet business prospects',
-        'day': 'May 5th 2026 0600Hrs',
-        'reminder': false
-    },
-    {
-        'id':5,
-        'text': 'research on crypto',
-        'day': 'June 5th 2026 0600Hrs',
-        'reminder': true
-    },])
+  const [tasks, setTasks] = useState ([])
+
+  useEffect (() => {
+    const getSetData = async () => {
+      const dataFromServer = await fetchTasks()
+      setTasks(dataFromServer)
+
+    }
+  getSetData()
+  }, [])
+
+  // Fetch data from Server
+  const fetchTasks = async ()  => {
+    const res = await fetch('http://localhost:5000/tasks')
+    const data = await res.json()
+    return data
+
+   }
+
   // Add a new task
   const addTask = (task) => {
     const id = Math.floor(Math.random() *100)+1
