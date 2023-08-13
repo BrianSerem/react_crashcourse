@@ -9,10 +9,11 @@ const App = () =>
 {
   const [showAddForm, setShowAddForm ] = useState(false)
   const [tasks, setTasks] = useState ([])
+  const taskUrl = 'http://localhost:5000/tasks'
 
   useEffect (() => {
     const getSetData = async () => {
-      const dataFromServer = await fetchTasks()
+      const dataFromServer = await fetchTasks(taskUrl)
       setTasks(dataFromServer)
 
     }
@@ -20,23 +21,26 @@ const App = () =>
   }, [])
 
   // Fetch data from Server
-  const fetchTasks = async ()  => {
-    const res = await fetch('http://localhost:5000/tasks')
+  const fetchTasks = async (url)  => {
+    const res = await fetch(url)
     const data = await res.json()
     return data
 
    }
 
   // Add a new task
-  const addTask = (task) => {
-    const id = Math.floor(Math.random() *100)+1
-    const newTask = {id, ...task}
-    console.log(newTask)
-    setTasks([...tasks, newTask])
+  const addTask = async (task) => {
+
+    console.log(task)
+    const res = await fetch('http://localhost:5000/tasks',
+    {method : 'POST', headers : {'Content-type': 'application/json'}, body:JSON.stringify(task)})
+    const newTasks = await res.json()
+    setTasks([...tasks, newTasks])
   }
   // function to delete a task
 
-  const deleteTask = (id) => {
+  const deleteTask = async (id) => {
+    await fetch(`http://localhost:5000/tasks/${id}`, { method : 'DELETE', })
     setTasks(tasks.filter((task) => task.id !== id))
   }
   // toggle task reminder
