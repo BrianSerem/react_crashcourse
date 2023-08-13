@@ -9,7 +9,7 @@ const App = () =>
 {
   const [showAddForm, setShowAddForm ] = useState(false)
   const [tasks, setTasks] = useState ([])
-  const taskUrl = 'http://localhost:5000/tasks'
+  const taskUrl = 'http://localhost:5000/tasks/'
 
   useEffect (() => {
     const getSetData = async () => {
@@ -28,11 +28,18 @@ const App = () =>
 
    }
 
+   const fetchTask = async (id)  => {
+    const res = await fetch(taskUrl+id)
+    const data = await res.json()
+    return data
+
+   }
+
   // Add a new task
   const addTask = async (task) => {
 
     console.log(task)
-    const res = await fetch('http://localhost:5000/tasks',
+    const res = await fetch(taskUrl,
     {method : 'POST', headers : {'Content-type': 'application/json'}, body:JSON.stringify(task)})
     const newTasks = await res.json()
     setTasks([...tasks, newTasks])
@@ -40,13 +47,22 @@ const App = () =>
   // function to delete a task
 
   const deleteTask = async (id) => {
-    await fetch(`http://localhost:5000/tasks/${id}`, { method : 'DELETE', })
+    await fetch(taskUrl+id, { method : 'DELETE', })
     setTasks(tasks.filter((task) => task.id !== id))
   }
   // toggle task reminder
 
-  const toggleReminder = (id) => {
-    setTasks(tasks.map((task) => task.id === id ? {...task, reminder : !task.reminder} : task))
+  const toggleReminder = async (id) => {
+    const taskToToggle = await fetchTask(id)
+    const updTask = {...taskToToggle, reminder: !taskToToggle.reminder}
+    console.log(updTask)
+
+    const res = await fetch(taskUrl+id, {method:'PUT',
+    headers : {'Content-type': 'application/json'},
+    body: JSON.stringify(updTask)})
+
+    const data = await res.json()
+    setTasks(tasks.map((task) => task.id === id ? {...task, reminder : data.reminder} : task))
   }
   // on clicking 'ADD' button
 

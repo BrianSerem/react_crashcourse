@@ -1,39 +1,27 @@
 {
   "tasks": [
     {
-      "id": 4,
-      "text": "meet business prospects",
-      "day": "May 5th 2026 0600Hrs",
-      "reminder": false
-    },
-    {
-      "id": 5,
-      "text": "research on crypto",
-      "day": "June 5th 2026 0600Hrs",
-      "reminder": true
-    },
-    {
-      "text": "BLAH BLAH BLAH",
-      "day": "Monday",
-      "reminder": true,
-      "id": 6
-    },
-    {
       "text": "take out a loon",
       "day": "monday",
-      "reminder": true,
+      "reminder": false,
       "id": 7
     },
     {
-      "text": "CQCSC",
-      "day": "CSACAC",
+      "text": "gvhjbnk",
+      "day": "monday",
+      "reminder": false,
+      "id": 8
+    },
+    {
+      "text": "qwdqwd",
+      "day": "qwdqwdqwd",
       "reminder": true,
       "id": 9
     },
     {
-      "text": "sqsqws",
-      "day": "friday",
-      "reminder": true,
+      "text": "vhbjhknlm;",
+      "day": "ghjkl",
+      "reminder": false,
       "id": 10
     }
   ]
