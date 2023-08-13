@@ -57,10 +57,10 @@ const App = () =>
     setTasks(tasks.map((task) => task.id === id ? {...task, reminder : !task.reminder} : task))
   }
   // on clicking 'ADD' button
-  
+
   return (
     <div className="container">
-      {<Header onAdd={() => setShowAddForm(!showAddForm)}/> }
+      {<Header onAdd={() => setShowAddForm(!showAddForm)} showAdd = {showAddForm}/> }
       {showAddForm &&<AddTask onAdd={addTask}/>}
       {tasks.length > 0 ? (<Tasks onToggle={toggleReminder} tasks={ tasks } onDelete = {deleteTask} />) : ('No more tasks!')}
     </div>
