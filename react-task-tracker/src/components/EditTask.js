@@ -7,13 +7,16 @@ const EditTask = ({ onEdit, id}) => {
 
     const onSubmit = (e) => {
         e.preventDefault()
+
         if(!text){
             alert('Please enter a new task Name')
+            return
         }
        onEdit({id, text, day})
 
-       setText('')
-       setDay('')
+        setText('')
+        setDay('')
+
 
     }
   return (

@@ -4,7 +4,6 @@ import About from "./components/About";
 import { useState, useEffect } from "react";
 import Tasks from "./components/Tasks";
 import AddTask from './components/AddTask'
-import EditTask from "./components/EditTask";
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 
@@ -53,9 +52,9 @@ const App = () => {
   // Edit existing task
   const editTask = async (task) => {
     const taskToEdit = await fetchTask(task.id)
-    console.log(taskToEdit)
+    
     const updTask = {...taskToEdit, day: task.day, text: task.text}
-    console.log(updTask)
+
 
     const res = await fetch(taskUrl+task.id, {
       method: 'PUT',

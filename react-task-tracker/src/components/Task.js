@@ -7,10 +7,7 @@ const Task = ({ task, onDelete, onToggle, onEdit }) => {
   const [showEditForm, setShowEditForm ] = useState(false)
 
   const onEditClick = () => {
-
        setShowEditForm(!showEditForm)
-
-
   }
 
   return (
