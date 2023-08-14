@@ -1,28 +1,16 @@
 {
   "tasks": [
     {
-      "text": "take out a loon",
-      "day": "monday",
-      "reminder": false,
-      "id": 7
-    },
-    {
-      "text": "gvhjbnk",
-      "day": "monday",
-      "reminder": false,
-      "id": 8
-    },
-    {
-      "text": "qwdqwd",
-      "day": "qwdqwdqwd",
+      "text": "ahajgahajha",
+      "day": "jbakja,ma",
       "reminder": true,
-      "id": 9
+      "id": 3
     },
     {
-      "text": "vhbjhknlm;",
-      "day": "ghjkl",
+      "text": "dwdwdw",
+      "day": "dwdwdw",
       "reminder": false,
-      "id": 10
+      "id": 4
     }
   ]
 }
