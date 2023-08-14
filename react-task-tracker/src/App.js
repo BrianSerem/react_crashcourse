@@ -13,6 +13,7 @@ const App = () => {
   const [tasks, setTasks] = useState([])
   const taskUrl = 'http://localhost:5000/tasks/'
 
+
   useEffect(() => {
     const getSetData = async () => {
       const dataFromServer = await fetchTasks(taskUrl)
@@ -52,7 +53,7 @@ const App = () => {
   // Edit existing task
   const editTask = async (task) => {
     const taskToEdit = await fetchTask(task.id)
-    
+
     const updTask = {...taskToEdit, day: task.day, text: task.text}
 
 
